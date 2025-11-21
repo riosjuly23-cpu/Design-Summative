@@ -1,0 +1,112 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clean Energy for Our School</title>
+  <style>
+    /* Very basic styles so it looks like a beginner made it */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f7fa; color: #222; }
+    header { background: #2f7a57; color: #fff; padding: 16px; }
+    header h1 { margin: 0; font-size: 20px; }
+    nav { margin-top: 8px; }
+    nav a { color: #fff; text-decoration: none; margin-right: 12px; font-size: 14px; }
+    main { padding: 16px; max-width: 900px; margin: 0 auto; }
+    section { background: #fff; padding: 14px; margin-bottom: 12px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);}
+    h2 { margin-top: 0; }
+    .muted { color: #555; font-size: 14px; }
+    button { background: #2f7a57; color: #fff; border: none; padding: 8px 10px; border-radius: 4px; cursor: pointer; }
+    footer { text-align: center; color: #666; padding: 18px 6px; font-size: 13px; }
+    input[type="range"] { width: 100%; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Clean Energy for Our School</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#resources">Resources</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>About this project</h2>
+      <p class="muted">I built this simple website to teach students about global warming and affordable clean energy (SDG7). I used a beginner tutorial video to learn the basics of HTML, CSS and a little JavaScript.</p>
+      <p>My goal: <strong>help classmates learn one small thing they can do today</strong> to save energy.</p>
+    </section>
+
+    <section id="why">
+      <h2>Why this matters</h2>
+      <p class="muted">Climate change is causing higher temperatures and other problems. Access to clean energy helps people live better lives and reduces pollution.</p>
+      <ul>
+        <li>Many people still do not have electricity.</li>
+        <li>Switching to LED lights and using solar can help reduce emissions.</li>
+      </ul>
+    </section>
+
+    <section id="solutions">
+      <h2>Simple solutions</h2>
+      <p class="muted">Easy things students and the school can try:</p>
+      <ul>
+        <li>Replace old bulbs with LED bulbs.</li>
+        <li>Turn off lights and computers when not in use.</li>
+        <li>Start a small solar demo on the roof or in a club.</li>
+      </ul>
+
+      <p class="muted">Estimate CO₂ saved (very rough):</p>
+      <label>LEDs replaced: <span id="ledCount">10</span></label>
+      <input id="leds" type="range" min="0" max="100" value="10" oninput="updateEstimate()" />
+      <p class="muted">Estimated CO₂ saved per year: <strong id="co2">0</strong> tonnes</p>
+    </section>
+
+    <section id="quiz">
+      <h2>Quick quiz</h2>
+      <p class="muted">Try this tiny quiz. (This is a beginner JavaScript prompt answer.)</p>
+      <button onclick="startQuiz()">Start quiz</button>
+      <div id="quizResult" class="muted" style="margin-top:8px"></div>
+    </section>
+
+    <section id="resources">
+      <h2>Resources I used</h2>
+      <p class="muted">I read simple pages and watched a tutorial video to learn how to make this:</p>
+      <ul>
+        <li><a href="https://sdgs.un.org/goals/goal7" target="_blank">UN SDG7</a></li>
+        <li><a href="https://www.ipcc.ch/report/ar6/" target="_blank">IPCC (summary)</a></li>
+      </ul>
+      <p class="muted">(Teacher: I can add more references if you want.)</p>
+    </section>
+  </main>
+
+  <footer>
+    Simple site for IB project. Made by Riona after following a beginner video tutorial.
+  </footer>
+
+  <script>
+    // Very small beginner javascript
+    function updateEstimate(){
+      var leds = Number(document.getElementById('leds').value);
+      document.getElementById('ledCount').textContent = leds;
+      // rough proxy: each LED saves ~0.05 tCO2/year
+      var co2 = (leds * 0.05).toFixed(1);
+      document.getElementById('co2').textContent = co2;
+    }
+    updateEstimate();
+
+    function startQuiz(){
+      var score = 0;
+      var a1 = prompt('Q1: What gas causes most global warming? (hint: starts with C)');
+      if (a1 && a1.toLowerCase().indexOf('co2') !== -1) score++;
+      var a2 = prompt('Q2: Name one renewable energy source (e.g., solar, wind)');
+      if (a2 && (a2.toLowerCase().indexOf('solar') !== -1 || a2.toLowerCase().indexOf('wind') !== -1)) score++;
+      document.getElementById('quizResult').textContent = 'You scored ' + score + ' / 2';
+    }
+  </script>
+
+</body>
+</html>
